@@ -2,6 +2,8 @@
 #include <cstring>
 #include <string.h>
 
+
+
 MyString & MyString::replace(const MyString & fromFormatStr,
                              const MyString & toFormatStr,
                              const int numberEntries)
