@@ -44,6 +44,8 @@ public:
             std::cout << "S = " << S << endl;
         }
     
+    
+    
     ~MyClass()
     {
         if(_size)
@@ -52,6 +54,8 @@ public:
         _array = 0;
         _size = 0;
     }
+    
+    
     
     MyClass(const T* array, int size):
           _size(size),
@@ -63,7 +67,9 @@ public:
         for(int i = 0; i < size; i++, _array++)
             _array->print();
     }
-        
+    
+    
+    
     MyClass(const MyClass<T, S>& copy_obj):
           _size(S)
         , _array(new T[_size])
@@ -156,6 +162,8 @@ template<int S> class MyClass<char, S>
       _size(0)
     {};
     
+    
+    
     MyClass(const char* array, int size):_array(0), _size(0)
     {
         if (0 == array || 0 == size)
@@ -186,8 +194,8 @@ private:
     int _size;
 };
 
-/*
-template<> class MyClass<std::vector<double>, int >
+
+template<int N> class MyClass<std::vector<double>, N >
 {
     public:
         MyClass(const std::vector<double>& vec, int size)
@@ -220,7 +228,7 @@ template<> class MyClass<std::vector<double>, int >
 private:
     std::vector<double> _vec;
     int _size;
-};*/
+};
 
 int main(int argc, char** argv) {
     
@@ -231,11 +239,11 @@ int main(int argc, char** argv) {
     const int len = sizeof("bsdfsdfdfs00")-1;
     //MyClass<std::string,0> m(&str,6);
     
-    strStruct temp;
+    const int N = 5;
+    
+    strStruct temp[N];
     
     MyClass<strStruct, 5> obj(&temp,5);
-    
-    
     
     return 0;
 }
